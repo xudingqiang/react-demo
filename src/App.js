@@ -1,23 +1,27 @@
 import './App.css';
 
 import React, { Component } from 'react'
+import About from './components/About'
+import Home from './components/Home'
+import { Link, Route } from 'react-router-dom';
 
-// import { nanoid } from 'nanoid';
-import Search from './components/Search';
-import List from './components/List';
 export default class App extends Component {
 
   state = {
-      searchContent :"",
-    
+    searchContent: "",
+
   }
 
   render() {
     return (
       <div>
-        <Search></Search>
-        <List></List>
-        
+        <Link to="/about">点击about页面</Link>     &nbsp;  &nbsp;
+        <Link to="/home">点击home页面</Link>
+
+        <div>---------------------------------------</div>
+
+        <Route path="/about" component={About}></Route>
+        <Route path='/home' component={Home}></Route>
       </div>
     )
   }
