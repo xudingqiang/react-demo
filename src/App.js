@@ -5,41 +5,20 @@ import About from './pages/About'
 import Home from './pages/Home'
 import User from './pages/User'
 import { Link, Redirect, Route } from 'react-router-dom';
-import {addAction,reduceAction} from './redux/countAction';
 import store from './redux/store';
+import Count from './containers/Count'
 
 export default class App extends Component {
 
   componentDidMount() {
-    store.subscribe(() => {
-      this.setState({});
-    })
+    // store.subscribe(() => {
+    //   this.setState({});
+    // })
   }
 
   state = {
     searchContent: "",
 
-  }
-
-  add = () => {
-    const value = parseInt(this.select1.value);
-    console.log('value',value);
-    // store.dispatch({ type: 'add', data: value });
-    store.dispatch(addAction(value))
-  }
-
-  reduce = () => {
-    const value = parseInt(this.select1.value);
-    // store.dispatch({ type: 'reduce', data: value });
-    store.dispatch(reduceAction(value))
-  }
-
-  asyncAdd = () => {
-    setTimeout(() => {
-      const value = parseInt(this.select1.value);
-      // store.dispatch({ type: 'add', data: value });
-      store.dispatch(addAction(value))
-    }, 500);
   }
 
   render() {
@@ -57,19 +36,7 @@ export default class App extends Component {
         <Redirect to={"/home"}></Redirect>
 
 
-        <div>结果： {store.getState()}  </div>
-        <div>
-          <select ref={(c) => this.select1 = c} >
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-          </select>
-          &nbsp;
-
-          <button onClick={this.add}>加</button>        &nbsp;
-          <button onClick={this.reduce}>减</button>         &nbsp;
-          <button onClick={this.asyncAdd}>异步加</button>       &nbsp;
-        </div>
+         <Count store={store}></Count>
       </div>
     )
   }
