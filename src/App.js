@@ -36,7 +36,7 @@ export default class App extends Component {
         <Redirect to={"/home"}></Redirect>
 
 
-         <Count store={store}></Count>
+         <Count ></Count>
       </div>
     )
   }
